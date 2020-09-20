@@ -1,9 +1,7 @@
 const { buildSchema } = require("graphql");
 
 module.exports = buildSchema(`
-    type Data {
-        data:String!
-    }
+
     type Entry{
         lexicalCategory:String! 
         definition:String!
@@ -24,8 +22,8 @@ module.exports = buildSchema(`
     }
 
     type RootQuery {
-        user: Data!
         getAllAddedWords:AllWords
+        getOneWord(key:String):Word!
        
     }
     type RootMutation {

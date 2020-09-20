@@ -93,15 +93,25 @@ module.exports = {
         };
     },
     getAllAddedWords: async () => {
-        let allWords = await Word.find();
+        let allWords = await Word.find().sort("key");
+        console.log(allWords);
         allWords = allWords.map((w) => {
             return {
                 ...w._doc,
                 _id: w._id.toString(),
             };
         });
+        console.log(allWords);
         return {
             data: allWords,
+        };
+    },
+    getOneWord: async ({key}) => {
+        let word = await Word.findOne({ key: key });
+        console.log(word)
+        return {
+            ...word._doc,
+            _id: word._id.toString(),
         };
     },
 };
