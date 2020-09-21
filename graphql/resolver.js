@@ -64,15 +64,16 @@ module.exports = {
             if (entry.lexicalCategory.id) {
                 lexicalCategory = entry.lexicalCategory.id;
             }
-            if (entry.entries[0].senses) {
-                if (entry.entries[0].senses[0].definitions) {
-                    definition = entry.entries[0].senses[0].definitions[0];
-                }
-                if (entry.entries[0].senses[0].examples) {
-                    example = entry.entries[0].senses[0].examples[0].text;
-                }
-            }
             if (entry.entries) {
+                if (entry.entries[0].senses) {
+                    if (entry.entries[0].senses[0].definitions) {
+                        definition = entry.entries[0].senses[0].definitions[0];
+                    }
+                    if (entry.entries[0].senses[0].examples) {
+                        example = entry.entries[0].senses[0].examples[0].text;
+                    }
+                }
+
                 if (entry.entries[0].etymologies) {
                     origin = entry.entries[0].etymologies[0];
                 }
