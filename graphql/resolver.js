@@ -94,24 +94,37 @@ module.exports = {
     },
     getAllAddedWords: async () => {
         let allWords = await Word.find().sort("key");
-        console.log(allWords);
         allWords = allWords.map((w) => {
             return {
                 ...w._doc,
                 _id: w._id.toString(),
             };
         });
-        console.log(allWords);
         return {
             data: allWords,
         };
     },
-    getOneWord: async ({key}) => {
+    getOneWord: async ({ key }) => {
         let word = await Word.findOne({ key: key });
-        console.log(word)
         return {
             ...word._doc,
             _id: word._id.toString(),
+        };
+    },
+    getWords: async ({ key }) => {
+        let allWords = await Word.find({
+            key: {
+                $regex: new RegExp(key),
+            },
+        }).sort("key");
+        allWords = allWords.map((w) => {
+            return {
+                ...w._doc,
+                _id: w._id.toString(),
+            };
+        });
+        return {
+            data: allWords,
         };
     },
 };

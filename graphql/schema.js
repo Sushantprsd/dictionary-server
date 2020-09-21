@@ -24,6 +24,7 @@ module.exports = buildSchema(`
     type RootQuery {
         getAllAddedWords:AllWords
         getOneWord(key:String):Word!
+        getWords(key:String):AllWords!
        
     }
     type RootMutation {
