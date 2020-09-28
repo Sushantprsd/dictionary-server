@@ -1,7 +1,6 @@
 const { buildSchema } = require("graphql");
 
 module.exports = buildSchema(`
-
     type Entry{
         lexicalCategory:String! 
         definition:String!
@@ -20,7 +19,6 @@ module.exports = buildSchema(`
     type AllWords{
         data: [Word!]!
     }
-
     type RootQuery {
         getAllAddedWords:AllWords
         getOneWord(key:String):Word!
